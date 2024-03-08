@@ -10,6 +10,7 @@ import Bookmarks from "./pages/Bookmarks";
 import About from "./pages/About";
 
 import Error from "./pages/Error";
+import User from "./pages/user";
 
 function App() {
   const [token, setToken] = useState(localStorage.getItem("token"));
@@ -36,11 +37,9 @@ function App() {
   return (
     <>
       <Routes>
-        {/*Public */}
         <Route path="/register" element={<Register />}></Route>
         <Route path="/login" element={<Login />}></Route>
 
-        {/*Protected*/}
         <Route
           path="/"
           element={
@@ -76,6 +75,14 @@ function App() {
             </ProtectedRoute>
           }
         ></Route>
+        <Route
+          path="/user"
+          element={
+            <ProtectedRoute isAuthentication={token ? true : false}>
+              <User></User>
+            </ProtectedRoute>
+          }
+        ></Route>
 
         <Route
           path="/movies/about/:id"
@@ -86,8 +93,8 @@ function App() {
           }
         ></Route>
 
-        <Route path="*"  element={<Error></Error>}></Route>
-      </Routes> 
+        <Route path="*" element={<Error></Error>}></Route>
+      </Routes>
     </>
   );
 }
