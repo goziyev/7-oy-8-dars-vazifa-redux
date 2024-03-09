@@ -27,7 +27,9 @@ function Layout({ children }) {
               src={Shape}
               alt="home icon"
             />
-            <img width={20} src={Movies} alt="Shape icon" />
+            <img width={20} src={Movies} onClick={() => {
+              navigate("/series")
+            }} alt="Shape icon" />
             <img width={20} src={tv} alt="Tv icon" />
             <img width={20} src={Bookmark} alt="Book icon" />
           </div>
