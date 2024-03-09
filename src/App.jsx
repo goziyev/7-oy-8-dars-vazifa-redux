@@ -11,6 +11,8 @@ import About from "./pages/About";
 
 import Error from "./pages/Error";
 import User from "./pages/user";
+import Layout from "./pages/Layout";
+
 
 function App() {
   const [token, setToken] = useState(localStorage.getItem("token"));
@@ -44,7 +46,9 @@ function App() {
           path="/"
           element={
             <ProtectedRoute isAuthentication={token ? true : false}>
-              <Home></Home>
+              <Layout>
+                <Home></Home>
+              </Layout>
             </ProtectedRoute>
           }
         ></Route>
@@ -53,7 +57,9 @@ function App() {
           path="/movies"
           element={
             <ProtectedRoute isAuthentication={token ? true : false}>
-              <Movies></Movies>
+              <Layout>
+                <Movies></Movies>
+              </Layout>
             </ProtectedRoute>
           }
         ></Route>
@@ -62,7 +68,9 @@ function App() {
           path="/series"
           element={
             <ProtectedRoute isAuthentication={token ? true : false}>
-              <Series></Series>
+              <Layout>
+                <Series></Series>
+              </Layout>
             </ProtectedRoute>
           }
         ></Route>
@@ -71,7 +79,9 @@ function App() {
           path="/bookmarks"
           element={
             <ProtectedRoute isAuthentication={token ? true : false}>
-              <Bookmarks></Bookmarks>
+              <Layout>
+                <Bookmarks></Bookmarks>
+              </Layout>
             </ProtectedRoute>
           }
         ></Route>
@@ -79,7 +89,9 @@ function App() {
           path="/user"
           element={
             <ProtectedRoute isAuthentication={token ? true : false}>
-              <User></User>
+              <Layout>
+                <User></User>
+              </Layout>
             </ProtectedRoute>
           }
         ></Route>
@@ -88,7 +100,9 @@ function App() {
           path="/movies/about/:id"
           element={
             <ProtectedRoute isAuthentication={token ? true : false}>
-              <About></About>
+              <Layout>
+                <About></About>
+              </Layout>
             </ProtectedRoute>
           }
         ></Route>

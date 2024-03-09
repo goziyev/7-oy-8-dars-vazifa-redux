@@ -38,7 +38,6 @@ function Login() {
           ) {
             alert(data.message);
           }
-          console.log(data);
         })
         .catch((error) => console.error("Xatolik:", error))
         .finally(() => {
