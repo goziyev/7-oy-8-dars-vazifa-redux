@@ -13,7 +13,6 @@ import Error from "./pages/Error";
 import User from "./pages/user";
 import Layout from "./pages/Layout";
 
-
 function App() {
   const [token, setToken] = useState(localStorage.getItem("token"));
   const navigate = useNavigate();
@@ -36,8 +35,11 @@ function App() {
     return children;
   }
 
+ 
   return (
     <>
+      
+
       <Routes>
         <Route path="/register" element={<Register />}></Route>
         <Route path="/login" element={<Login />}></Route>

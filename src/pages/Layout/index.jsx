@@ -30,8 +30,12 @@ function Layout({ children }) {
             <img width={20} src={Movies} onClick={() => {
               navigate("/series")
             }} alt="Shape icon" />
-            <img width={20} src={tv} alt="Tv icon" />
-            <img width={20} src={Bookmark} alt="Book icon" />
+            <img width={20} src={tv} alt="Tv icon"  onClick={() => {
+              navigate("/series")
+            }} />
+            <img width={20} src={Bookmark} alt="Book icon"  onClick={() => {
+              navigate("/series")
+            }} />
           </div>
         </div>
         <div className="user">
