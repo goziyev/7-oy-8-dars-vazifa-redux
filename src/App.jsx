@@ -35,11 +35,8 @@ function App() {
     return children;
   }
 
- 
   return (
     <>
-      
-
       <Routes>
         <Route path="/register" element={<Register />}></Route>
         <Route path="/login" element={<Login />}></Route>
@@ -48,9 +45,7 @@ function App() {
           path="/"
           element={
             <ProtectedRoute isAuthentication={token ? true : false}>
-              <Layout>
-                <Home></Home>
-              </Layout>
+              <Home></Home>
             </ProtectedRoute>
           }
         ></Route>

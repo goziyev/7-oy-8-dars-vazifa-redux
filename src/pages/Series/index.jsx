@@ -8,7 +8,7 @@ export default function Home() {
   const [loader, setLoader] = useState(true);
   useEffect(() => {
     setLoader(true);
-    const apiKey = "H5V36NK-MAFM6FH-KG3G6VN-BG231R3";
+    const apiKey = "5YCYC3H-0D9M5AK-Q5R3PEM-SAY9TTD";
     fetch("https://api.kinopoisk.dev/v1.4/series?lists=top250", {
       headers: {
         "X-API-KEY": apiKey,
