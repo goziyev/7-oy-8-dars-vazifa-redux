@@ -22,7 +22,7 @@ function App() {
     if (!localStorage.getItem("token") && location.pathname != "/register") {
       navigate("/login");
     }
-  }, []);
+  }, [navigate]);
 
   function ProtectedRoute({
     children,
