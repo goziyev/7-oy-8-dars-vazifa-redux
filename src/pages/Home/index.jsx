@@ -11,7 +11,7 @@ import Shape from "../../assets/Shape.svg";
 import tv from "../../assets/tv.svg";
 import search from "../../assets/search.svg";
 import user from "../../assets/Oval.svg";
-import {useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 
 export default function Home() {
   const [data, setData] = useState([]);
@@ -67,6 +67,7 @@ export default function Home() {
             setreck(data.docs);
             console.log(data.docs);
             setSearchL(true);
+            // console.log(data);
           })
           .catch((error) => console.error("Fetchda xatolik:", error));
       }
@@ -163,30 +164,30 @@ export default function Home() {
                 <div className="container px-5 py-14 mx-auto">
                   <div className="flex flex-wrap gap-9">
                     {searchL
-                      ? reck.map((el, index) => {
-                          return (
-                            <div
-                              key={index}
-                              className="lg:w-1/4 md:w-1/2 p-4 w-full"
-                            >
-                              <a className="block relative h-48 rounded overflow-hidden">
-                                <img
-                                  alt="ecommerce"
-                                  className="object-cover object-center w-full h-full block"
-                                  src={el.backdrop.url}
-                                />
-                              </a>
-                              <div className="mt-4">
-                                <h3 className="text-gray-100 text-xs tracking-widest title-font mb-1">
-                                  CATEGORY
-                                </h3>
-                                <h2 className="text-gray-100 truncate title-font text-lg font-medium">
-                                  {el.name}
-                                </h2>
-                              </div>
+                      ?( reck.length ? reck.map((el, index) => {
+                        return (
+                          <div
+                            key={index}
+                            className="lg:w-1/4 md:w-1/2 p-4 w-full"
+                          >
+                            <a className="block relative h-48 rounded overflow-hidden">
+                              <img
+                                alt="ecommerce"
+                                className="object-cover object-center w-full h-full block"
+                                src={el.backdrop.url}
+                              />
+                            </a>
+                            <div className="mt-4">
+                              <h3 className="text-gray-100 text-xs tracking-widest title-font mb-1">
+                                CATEGORY
+                              </h3>
+                              <h2 className="text-gray-100 truncate title-font text-lg font-medium">
+                                {el.name}
+                              </h2>
                             </div>
-                          );
-                        })
+                          </div>
+                        );
+                      }) : <h2 className="text-center mt-5">Bunday malumot topilmadi</h2>) 
                       : reck.map((el, index) => {
                           return <Card key={index} el={el} />;
                         })}

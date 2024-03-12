@@ -1,58 +1,52 @@
-import React, { useEffect, useState } from "react";
-import "./index.css";
-import Card from "../../components/card";
-import CaruselCard from "../../components/caruselCard";
-export default function Home() {
+import { useState, useEffect } from "react";
+function Seris() {
   const [data, setData] = useState([]);
-  let [reck, setreck] = useState([]);
-  const [loader, setLoader] = useState(true);
+  const apiKey = "5YCYC3H-0D9M5AK-Q5R3PEM-SAY9TTD";
   useEffect(() => {
-    setLoader(true);
-    const apiKey = "5YCYC3H-0D9M5AK-Q5R3PEM-SAY9TTD";
-    fetch("https://api.kinopoisk.dev/v1.4/series?lists=top250", {
+    fetch("https://api.kinopoisk.dev/v1.4/movie?type=tv-series", {
       headers: {
         "X-API-KEY": apiKey,
       },
     })
       .then((response) => response.json())
-      .then((el) => {
-        setData(el.docs);
-        setLoader(false);
-      })
-      .catch((error) => console.error("Error:", error));
-
-    fetch("https://api.kinopoisk.dev/v1.4/list?page=4&limit=20", {
-      headers: {
-        "X-API-KEY": apiKey,
-      },
-    })
-      .then((response) => response.json())
-      .then((el) => setreck(el.docs))
+      .then((data) => setData(data.docs))
       .catch((error) => console.error("Error:", error));
   }, []);
 
-  console.log(reck);
   return (
-    <>
-      <div>
-        <h2>Series</h2>
-        <div className="carousel carousel-center w-full p-2  to-transparent rounded-box gap-6 ">
-          {reck.map((el, index) => {
-            return <CaruselCard key={index} el={el} />;
+    <section class="text-gray-600 body-font">
+      <div class="container px-5 py-14 mx-auto">
+        <div class="flex flex-wrap -m-4">
+          {data.map((el) => {
+            return (
+              <div
+                onClick={() => {
+                  hendalClick(el);
+                }}
+                class="lg:w-1/4 md:w-1/2 p-4 w-full"
+              >
+                <a class="block relative h-48 rounded overflow-hidden">
+                  <img
+                    alt="ecommerce"
+                    class="object-cover object-center w-full h-full block"
+                    src={el.backdrop.url}
+                  />
+                </a>
+                <div class="mt-4">
+                  <h3 class="text-gray-100 text-xs tracking-widest title-font mb-1">
+                    CATEGORY
+                  </h3>
+                  <h2 class="text-gray-100 truncate title-font text-lg font-medium">
+                    {el.name}
+                  </h2>
+                </div>
+              </div>
+            );
           })}
         </div>
-        <div className="content-main">
-          <section className="text-gray-600 body-font">
-            <div className="container px-5 py-14 mx-auto">
-              <div className="flex flex-wrap gap-8">
-                {reck.map((el, index) => {
-                  return <Card key={index} el={el} />;
-                })}
-              </div>
-            </div>
-          </section>
-        </div>
       </div>
-    </>
+    </section>
   );
 }
+
+export default Seris;
